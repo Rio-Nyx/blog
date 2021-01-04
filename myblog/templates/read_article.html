@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+    {% load static %}
+{% block tab_content %} 
+    {{object.title}}
+{% endblock %}{% block page_content %}
+    <div class="container">
+        <div >
+        <!-- Post Content Column -->
+            <!-- Title -->
+            <h1 >{{object.title}}</h1>
+            <h3 >{{object.subtitle}}</h3>
+            <hr>
+            <!-- Date/Time -->
+            <p>Published on: {{object.created_at}}</p>
+            <hr>
+            <!-- Post Content -->
+            <p class="lead ">{{object.body | safe }}</p>
+        </div>
+        <div class="d-grid gap-2">
+             <button class="btn btn-outline-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              Comments
+            </button>
+        </div>
+    </div>
+
+<div class="container collapse " id="collapseExample">
+  <div class="row">
+    <div class=" card mb-4  mt-3 ">
+      <div class="card-body">
+        <!-- comments -->
+        <h2>{{ comments.count }} comments</h2>
+
+        {% for comment in comments %}
+        <div class="comments" style="padding: 10px;">
+          <p class="font-weight-bold">
+            {{ comment.name }}
+            <span class=" text-muted font-weight-normal">
+              {{ comment.created_on }}
+            </span>
+          </p>
+          {{ comment.body | linebreaks }}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class=" card mb-4  mt-3 ">
+      <div class="card-body">
+        {% if new_comment %}
+        <div class="alert alert-success" role="alert">
+          Your comment is awaiting moderation
+        </div>
+        {% else %}
+        <h3>Leave a comment</h3>
+        <form method="post" style="margin-top: 1.3em;">
+          {{ comment_form.as_p }}
+          {% csrf_token %}
+          <button type="submit" class="btn btn-secondary btn-lg">Submit</button>
+        </form>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block styling %}
+  <link rel="stylesheet" type="text/css" href="{% static "css/reader.css" %}">
+{% endblock %}
