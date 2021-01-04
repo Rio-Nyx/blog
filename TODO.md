@@ -1,0 +1,3 @@
+- create a footer
+- Better About Page
+- Direction to posts from home page
