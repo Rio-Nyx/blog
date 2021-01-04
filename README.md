@@ -9,4 +9,4 @@ personal blog
 - Comment System for each post
 - Comments can be controlled by admin
 
-Note:  *Incomplete*
+Note:  *Incomplete (Some features yet to be implemented)* 
