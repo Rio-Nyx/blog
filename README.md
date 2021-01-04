@@ -1,5 +1,6 @@
 # blog
 personal blog
+Build using django 
 
 ## Features
 - Admin panel
