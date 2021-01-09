@@ -9,10 +9,10 @@
             <!-- Title -->
             <h1 >{{object.title}}</h1>
             <h3 >{{object.subtitle}}</h3>
-            <hr>
+            {# <hr> #}
             <!-- Date/Time -->
             <p>Published on: {{object.created_at}}</p>
-            <hr>
+            {# <hr> #}
             <!-- Post Content -->
             <p class="lead ">{{object.body | safe }}</p>
         </div>
@@ -31,10 +31,10 @@
         <h2>{{ comments.count }} comments</h2>
 
         {% for comment in comments %}
-        <div class="comments" style="padding: 10px;">
+        <div class="comments" >
           <p class="font-weight-bold">
             {{ comment.name }}
-            <span class=" text-muted font-weight-normal">
+            <span class="text-muted font-weight-normal">
               {{ comment.created_on }}
             </span>
           </p>
@@ -47,11 +47,11 @@
       <div class="card-body">
         {% if new_comment %}
         <div class="alert alert-success" role="alert">
-          Your comment is awaiting moderation
+          Your comment is submitted
         </div>
         {% else %}
         <h3>Leave a comment</h3>
-        <form method="post" style="margin-top: 1.3em;">
+        <form method="post" >
           {{ comment_form.as_p }}
           {% csrf_token %}
           <button type="submit" class="btn btn-secondary btn-lg">Submit</button>
@@ -61,7 +61,5 @@
     </div>
   </div>
 </div>
-{% endblock %}
-{% block styling %}
-  <link rel="stylesheet" type="text/css" href="{% static "css/reader.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/reader.css' %}">
 {% endblock %}

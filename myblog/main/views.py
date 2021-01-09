@@ -1,6 +1,9 @@
 from .models import BlogPost
 from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
 from .forms import CommentForm
+from django.urls import reverse
+
 # Create your views here.
 def index(request):
 	template_name = 'base.html'
@@ -36,6 +39,12 @@ def read_article(request, slug):
             new_comment.post = post
             # Save the comment to the database
             new_comment.save()
+            # return HttpResponseRedirect(reverse("read_article:",args=(slug)))
+            return render(request, template_name, {'object':context['object'],
+                                            'post': post,
+                                           'comments': comments,
+                                           'new_comment': new_comment,
+                                           'comment_form': comment_form})
     else:
         comment_form = CommentForm()
 
@@ -49,8 +58,9 @@ def about_view(request):
     template_name = "about.html"
     return render(request, template_name)
 
-# def post_detail(request, slug):
-#     template_name = 'read_article.html'
+# def search(request):
+#     template_name = "posts.html"
+#     query_set = BlogPost.objects.filter(title_icontains=query)
+#     context = {'object_list': query_set}
+#     return render(request, template_name, context)
     
-
-#     return render(request, template_name, )

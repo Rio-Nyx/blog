@@ -26,7 +26,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home),
-    path('posts/<str:slug>', read_article),
+    path('posts/<str:slug>', read_article,name="read_article"),
     path('about/',about_view),
     path('posts/',posts),
     # url(r'^markdownx/', include('markdownx.urls')),

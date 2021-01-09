@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+body{
+	font-family: 'Playfair Display', serif;
+	text-rendering:optimizeLegility;
+	-webkit-font-smoothing:antialiased;
+	color:rgba(0,0,0,10);
+	background-color:rgba(255,255,255,,100);
+}
+
+.navbar-brand{
+	color:rgba(30,100,193,50) !important;
+	font-size:1.5rem;
+}
